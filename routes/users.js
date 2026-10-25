@@ -6,7 +6,6 @@ const User = require("../models/users");
 router
   .route("/")
   .get(async (req, res) => {
-    // return res.json(users);
     try {
       const allUsers = await User.find({});
       return res.json(allUsers);
@@ -31,19 +30,12 @@ router
       console.log("Error while creating user", err);
       return res.json(err);
     }
-
-    // users.push({ ...body, id: users.length + 1 });
-    // fs.writeFile("./DB.json", JSON.stringify(users), (err, data) => {
-    //   return res.json({ status: `User created with user id ${users.length}` });
-    // });
   });
 
 router
   .route("/:id")
   .get(async (req, res) => {
     const userId = req.params.id;
-    // const userByID = users.find((user) => user.id === userId);
-    // return res.json(userByID);
 
     try {
       const userById = await User.findById(userId);
@@ -92,17 +84,6 @@ router
         err,
       });
     }
-
-    // const body = req.body;
-    // const userIndex = users.findIndex((user) => user.id === userId);
-    // users.splice(userIndex, 1, {
-    //   ...users[userIndex],
-    //   ...body,
-    // });
-
-    // fs.writeFile("./DB.json", JSON.stringify(users), (err, data) => {
-    //   return res.json({ status: `User with user id ${userId} is updated!` });
-    // });
   })
   .delete(async (req, res) => {
     const userId = req.params.id;
@@ -115,21 +96,6 @@ router
       console.log(`Error finding the user with id ${userId}`, err);
       return res.json({ message: "No user found", err });
     }
-    // const filteredUser = users.filter((user) => user.id !== userId);
-    // fs.writeFile("./DB.json", JSON.stringify(filteredUser), (err, data) => {
-    //   return res.json({
-    //     status: `User with user id ${userId} is deleted successfully!`,
-    //   });
-    // });
   });
-
-// app.post("/users", (req, res) => {
-//   const body = req.body;
-//   users.push({ ...body, id: users.length + 1 });
-
-//   fs.writeFile("./DB.json", JSON.stringify(users), (err, data) => {
-//     return res.json({ status: `User created with user id ${users.length}` });
-//   });
-// });
 
 module.exports = router;
