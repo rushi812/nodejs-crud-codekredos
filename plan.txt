@@ -1,0 +1,21 @@
+APIs
+
+GET /users = list all users -> completed
+
+GET /users/1 - get user with id 1
+GET /users/100 - get user with id 100
+
+DYNAMIC PATH PARAMETERS
+/users/:id -> correct
+/users/id => wrong
+
+POST /users - create new user -> completed
+PATCH /users/1 - edit the user with id 1 -> completed
+DELETE /users/1 - delete the user with id 1 -> completed
+
+
+PENDING
+threads
+versioning of packages
+quick overview of node js internals
+middlewares
